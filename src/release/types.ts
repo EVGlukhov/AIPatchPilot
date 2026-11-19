@@ -13,9 +13,19 @@ export interface PullRequestRecord {
   mergedAt: string;
 }
 
+export const CHANGED_FILE_STATUS = {
+  ADDED: "added",
+  MODIFIED: "modified",
+  DELETED: "deleted",
+  RENAMED: "renamed",
+} as const;
+
+export type ChangedFileStatus =
+  (typeof CHANGED_FILE_STATUS)[keyof typeof CHANGED_FILE_STATUS];
+
 export interface ChangedFile {
   path: string;
-  status: "added" | "modified" | "deleted" | "renamed";
+  status: ChangedFileStatus;
   previousPath?: string;
 }
 
