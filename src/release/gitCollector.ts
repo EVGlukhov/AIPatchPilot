@@ -5,10 +5,10 @@ const execFileAsync = promisify(execFile);
 
 const releaseTagPattern = /^v(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)$/;
 
-async function findPreviousReleaseTag(
+export async function findPreviousReleaseTag(
   currentTag: string,
 ): Promise<string | null> {
-  if (releaseTagPattern.test(currentTag)) {
+  if (!releaseTagPattern.test(currentTag)) {
     throw new Error(`Invalid release tag: ${currentTag}`);
   }
 
