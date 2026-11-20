@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node --import tsx --test src/**/*.test.ts",
+    "release:report": "tsx src/release/cli.ts"
   },
   "repository": {
     "type": "git",
