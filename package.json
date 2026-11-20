@@ -10,16 +10,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/EVGlukhov/PatchPilot.git"
+    "url": "git+https://github.com/EVGlukhov/AIPatchPilot.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "module",
   "bugs": {
-    "url": "https://github.com/EVGlukhov/PatchPilot/issues"
+    "url": "https://github.com/EVGlukhov/AIPatchPilot/issues"
   },
-  "homepage": "https://github.com/EVGlukhov/PatchPilot#readme",
+  "homepage": "https://github.com/EVGlukhov/AIPatchPilot#readme",
   "devDependencies": {
     "@types/node": "^26.6.6",
     "tsx": "^4.23.15",

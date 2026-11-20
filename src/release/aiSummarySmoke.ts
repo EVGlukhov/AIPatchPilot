@@ -2,7 +2,7 @@ import { generateReleaseSummary } from "./aiSummary.js";
 import type { ReleaseReportData } from "./types.js";
 
 const sample: ReleaseReportData = {
-  repository: "EVGlukhov/PatchPilot",
+  repository: "EVGlukhov/AIPatchPilot",
   currentTag: "v0.1.0",
   previousTag: null,
   pullRequests: [
@@ -10,7 +10,7 @@ const sample: ReleaseReportData = {
       number: 42,
       title: "Add search",
       author: "alice",
-      url: "https://github.com/EVGlukhov/PatchPilot/pull/42",
+      url: "https://github.com/EVGlukhov/AIPatchPilot/pull/42",
       mergedAt: "2026-11-20T12:00:00Z",
     },
   ],
@@ -19,7 +19,7 @@ const sample: ReleaseReportData = {
       sha: "abcdef123456789",
       message: "Add search",
       author: "Alice",
-      url: "https://github.com/EVGlukhov/PatchPilot/commit/abcdef123456789",
+      url: "https://github.com/EVGlukhov/AIPatchPilot/commit/abcdef123456789",
     },
   ],
   files: [{ path: "src/search.ts", status: "added" }],

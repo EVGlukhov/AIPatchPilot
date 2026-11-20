@@ -1,8 +1,8 @@
-# PatchPilot
+# AIPatchPilot
 
-PatchPilot is a TypeScript project for analyzing software changes and preparing AI-assisted development workflows. Its current feature is a release report generator.
+AIPatchPilot is a TypeScript project for analyzing software changes and preparing AI-assisted development workflows. Its current feature is a release report generator.
 
-> **Project status:** The release report workflow is implemented in this repository. PatchPilot is not currently published as an npm package or as a reusable GitHub Action.
+> **Project status:** The release report workflow is implemented in this repository. AIPatchPilot is not currently published as an npm package or as a reusable GitHub Action.
 
 ## Release reports
 
