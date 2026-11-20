@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "node --import tsx --test src/**/*.test.ts",
-    "release:report": "tsx src/release/cli.ts"
+    "release:report": "tsx src/release/cli.ts",
+    "typecheck": "tsc --noEmit"
   },
   "repository": {
     "type": "git",
