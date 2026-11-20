@@ -34,7 +34,7 @@ const sample: ReleaseReportData = {
 };
 
 test("renders release details and links", () => {
-  const markdown = renderReleaseReport(sample);
+  const markdown = renderReleaseReport(sample, "Adds search functionality.");
 
   assert.ok(markdown.includes("# Release v1\\.2\\.3"));
   assert.ok(markdown.includes("Changes from v1\\.2\\.2 to v1\\.2\\.3"));
@@ -43,6 +43,7 @@ test("renders release details and links", () => {
       "[\\#42: Add search](<https://github.com/octo/project/pull/42>)",
     ),
   );
+  assert.ok(markdown.includes("Adds search functionality\\."));
   assert.ok(
     markdown.includes(
       "[abcdef1](<https://github.com/octo/project/commit/abcdef123456789>)",
@@ -52,13 +53,16 @@ test("renders release details and links", () => {
 });
 
 test("shows first-release and empty-list messages", () => {
-  const markdown = renderReleaseReport({
-    ...sample,
-    previousTag: null,
-    pullRequests: [],
-    commits: [],
-    files: [],
-  });
+  const markdown = renderReleaseReport(
+    {
+      ...sample,
+      previousTag: null,
+      pullRequests: [],
+      commits: [],
+      files: [],
+    },
+    "Adds search functionality.",
+  );
 
   assert.ok(markdown.includes("Initial release (no previous tag)"));
   assert.ok(markdown.includes("No merged pull requests found."));
@@ -69,15 +73,18 @@ test("shows first-release and empty-list messages", () => {
 test("rejects links outside github.com", () => {
   assert.throws(
     () =>
-      renderReleaseReport({
-        ...sample,
-        pullRequests: [
-          {
-            ...sample.pullRequests[0]!,
-            url: "https://example.com/pull/42",
-          },
-        ],
-      }),
+      renderReleaseReport(
+        {
+          ...sample,
+          pullRequests: [
+            {
+              ...sample.pullRequests[0]!,
+              url: "https://example.com/pull/42",
+            },
+          ],
+        },
+        "Adds search functionality.",
+      ),
     /Expected a GitHub HTTPS URL/,
   );
 });
@@ -85,10 +92,13 @@ test("rejects links outside github.com", () => {
 test("rejects renamed files without their old path", () => {
   assert.throws(
     () =>
-      renderReleaseReport({
-        ...sample,
-        files: [{ path: "src/new", status: CHANGED_FILE_STATUS.RENAMED }],
-      }),
+      renderReleaseReport(
+        {
+          ...sample,
+          files: [{ path: "src/new", status: CHANGED_FILE_STATUS.RENAMED }],
+        },
+        "Adds search functionality.",
+      ),
     /missing previousPath/,
   );
 });

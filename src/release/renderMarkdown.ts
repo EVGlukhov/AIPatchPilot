@@ -1,6 +1,9 @@
 import { CHANGED_FILE_STATUS, type ReleaseReportData } from "./types.js";
 
-export function renderReleaseReport(data: ReleaseReportData): string {
+export function renderReleaseReport(
+  data: ReleaseReportData,
+  summary: string,
+): string {
   const comparison =
     data.previousTag === null
       ? "Initial release (no previous tag)"
@@ -49,6 +52,9 @@ export function renderReleaseReport(data: ReleaseReportData): string {
     "",
     `Repository: ${escapeMarkdown(data.repository)}`,
     `Comparison: ${comparison}`,
+    "",
+    "## Summary",
+    escapeMarkdown(summary),
     "",
     "## Pull requests",
     ...pullRequestLines,

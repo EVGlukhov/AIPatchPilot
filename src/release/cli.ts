@@ -2,6 +2,7 @@ import { join } from "node:path";
 import { collectReleaseData } from "./collectReleaseData.js";
 import { renderReleaseReport } from "./renderMarkdown.js";
 import { mkdir, writeFile } from "node:fs/promises";
+import { generateReleaseSummary } from "./aiSummary.js";
 
 async function main(): Promise<void> {
   const currentTag = process.argv[2];
@@ -21,7 +22,8 @@ async function main(): Promise<void> {
   }
 
   const data = await collectReleaseData(currentTag, repository, token);
-  const report = renderReleaseReport(data);
+  const summary = await generateReleaseSummary(data);
+  const report = renderReleaseReport(data, summary);
 
   const outputDirectory = join("docs", "releases");
   await mkdir(outputDirectory, { recursive: true });
